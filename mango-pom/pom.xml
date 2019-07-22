@@ -25,6 +25,9 @@
         <project.version>1.0.0</project.version>
         <mango-admin.version>1.0.0</mango-admin.version>
         <mango-common.version>1.0.0</mango-common.version>
+        <mango-backup.version>1.0.0</mango-backup.version>
+        <mango-consul.version>1.0.0</mango-consul.version>
+        <mango-core.version>1.0.0</mango-core.version>
     </properties>
 
     <dependencies>
@@ -43,6 +46,10 @@
     <modules>
         <module>../mango-admin</module>
         <module>../mango-common</module>
+        <module>../mango-backup</module>
+        <module>../mango-consul</module>
+        <module>../mango-core</module>
+        <module>../mango-monitor</module>
     </modules>
 
 </project>

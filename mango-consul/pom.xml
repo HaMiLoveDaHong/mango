@@ -10,12 +10,13 @@
     </parent>
 
     <groupId>com.louis</groupId>
-    <artifactId>mango-common</artifactId>
+    <artifactId>mango-consul</artifactId>
     <version>1.0.0</version>
-    <name>mango-common</name>
-    <description>mango-common</description>
+    <name>mango-consul</name>
+    <description>mango-consul</description>
 
     <properties>
+        <skipTests>true</skipTests>
         <java.version>1.8</java.version>
     </properties>
 
