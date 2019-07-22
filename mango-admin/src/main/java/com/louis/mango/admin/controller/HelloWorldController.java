@@ -18,4 +18,10 @@ public class HelloWorldController {
         return "hello world!";
     }
 
+    @RequestMapping(value = "/bye")
+    @ResponseBody
+    public String bye(){
+        return "bye bye!";
+    }
+
 }
