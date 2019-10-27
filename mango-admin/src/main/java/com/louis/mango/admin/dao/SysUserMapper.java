@@ -1,12 +1,10 @@
 package com.louis.mango.admin.dao;
 
-import com.louis.mango.admin.model.SysUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.louis.mango.admin.model.SysUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
-import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -17,6 +15,7 @@ import java.util.List;
  * @author hami
  * @since 2019-10-11
  */
+@Component
 @Mapper
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
@@ -25,4 +24,10 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
      * @return
      */
     List<SysUser> findAll();
+
+    /**
+     * 查询记录分页
+     * @return
+     */
+    List<SysUser> findPage();
 }

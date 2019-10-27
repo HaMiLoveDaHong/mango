@@ -4,6 +4,9 @@ import com.louis.mango.admin.model.SysUser;
 import com.louis.mango.admin.dao.SysUserMapper;
 import com.louis.mango.admin.service.ISysUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.louis.mango.core.page.MybatisPageHelper;
+import com.louis.mango.core.page.PageRequest;
+import com.louis.mango.core.page.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +29,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     @Override
     public List<SysUser> findAll() {
         return sysUserMapper.findAll();
+    }
+
+    @Override
+    public PageResult findPage(PageRequest pageRequest) {
+        return MybatisPageHelper.findPage(pageRequest,sysUserMapper);
     }
 }

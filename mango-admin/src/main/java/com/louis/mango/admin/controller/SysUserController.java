@@ -4,8 +4,11 @@ package com.louis.mango.admin.controller;
 import com.alibaba.fastjson.JSON;
 import com.louis.mango.admin.model.SysUser;
 import com.louis.mango.admin.service.ISysUserService;
+import com.louis.mango.core.page.PageRequest;
+import com.louis.mango.core.page.PageResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,5 +37,17 @@ public class SysUserController {
     public String findAll(){
         List<SysUser> sysUsers = iSysUserService.findAll();
         return JSON.toJSONString(sysUsers);
+    }
+
+    @RequestMapping(value = "/findPage")
+    @ResponseBody
+    public PageResult findPage(@RequestBody PageRequest pageRequest){
+        PageResult pageResult = null;
+        try {
+            pageResult = iSysUserService.findPage(pageRequest);
+        }catch (Exception e){
+            log.info("异常信息：{},详情：{}",e.getMessage(),e);
+        }
+        return pageResult;
     }
 }

@@ -1,3 +1,4 @@
+#spring 配置
 spring:
   datasource:
     druid:
@@ -20,7 +21,23 @@ spring:
       pool-prepared-statements: true
       max-open-prepared-statements: 50
 
+#mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.louis.mango.admin.model
+
+#pagehelper
+pagehelper:
+   helperDialect: mysql
+   reasonable: true
+   supportMethodsArguments: true
+   params: count=countSql
+
+#端口号
 server:
   port: 8081
+
+
 
 

@@ -2,6 +2,8 @@ package com.louis.mango.admin.service;
 
 import com.louis.mango.admin.model.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.louis.mango.core.page.PageRequest;
+import com.louis.mango.core.page.PageResult;
 
 import java.util.List;
 
@@ -21,4 +23,10 @@ public interface ISysUserService extends IService<SysUser> {
      */
     List<SysUser> findAll();
 
+    /**
+     * 查询记录分页
+     * @param pageRequest
+     * @return
+     */
+    PageResult findPage(PageRequest pageRequest);
 }

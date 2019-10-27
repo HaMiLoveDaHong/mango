@@ -2,20 +2,19 @@ package com.louis.mango.admin.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 
 /**
+ * 弃用  注解方式不支持mybatis-plus 基本的增删改查方法，改为yml文件配置
  * @quthor haMi
  * @date2019/10/11
  */
-@Configuration
-@MapperScan("com.louis.mango.**.dao")
+//@Configuration
+//@MapperScan("com.louis.mango.admin.dao")
 public class MybatisConfig {
     @Autowired
     private DataSource dataSource;

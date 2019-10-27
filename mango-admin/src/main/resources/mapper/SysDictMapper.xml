@@ -24,4 +24,25 @@
         value, lable, type, description, sort, create_by, create_time, last_update_by, last_update_time, remarks, del_flag
     </sql>
 
+    <select id="findPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_dict
+    </select>
+
+    <select id="findPageByLable" parameterType="java.lang.String"
+            resultMap="BaseResultMap">
+        <bind name="pattern" value="`%`+_paramter.lable+`%`"/>
+        select
+        <include refid="Base_Column_List"/>
+        from sys_dict
+        where lable like #{pattern}
+    </select>
+
+    <select id="findByLable" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_dict
+        where lable = #{lable,jdbcType=VARCHAR}
+    </select>
 </mapper>
