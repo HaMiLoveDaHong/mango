@@ -39,7 +39,18 @@ public class MybatisPageHelper {
         int pageSize = pageRequest.getPageSize();
         PageHelper.startPage(pageNum,pageSize);
         //利用反射查询方法
-        Method method = ReflectionUtils.findMethod(mapper.getClass(),queryMethodName);
+        Method method = null;
+        if (args == null){
+            method = ReflectionUtils.findMethod(mapper.getClass(),queryMethodName);
+        }else {
+            Method[] methods = mapper.getClass().getMethods();
+            for (Method param:methods){
+                if (queryMethodName.equals(param.getName())){
+                    method = param;
+                    break;
+                }
+            }
+        }
         Object result = ReflectionUtils.invokeMethod(method,mapper,args);
         return getPageResult(pageRequest,new PageInfo((java.util.List) result));
     }

@@ -26,6 +26,8 @@ import java.util.List;
 @Slf4j
 @Service
 public class SysDictServiceImpl extends ServiceImpl<SysDictMapper, SysDict> implements ISysDictService {
+    @Autowired
+    SysDictMapper sysDictMapper;
 
     @Override
     public List<SysDict> findByLable(String lable) {
@@ -47,7 +49,7 @@ public class SysDictServiceImpl extends ServiceImpl<SysDictMapper, SysDict> impl
     public PageResult findPageByLable(SysDictRequestVo pageRequest) {
         //baseMapper 的方法名称
         String queryMethodName = "findPageByLable";
-        return MybatisPageHelper.findPage(pageRequest,super.baseMapper,queryMethodName,pageRequest.getLable());
+        return MybatisPageHelper.findPage(pageRequest,sysDictMapper,queryMethodName,pageRequest.getLable());
     }
 
     @Override

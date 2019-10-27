@@ -32,7 +32,7 @@
 
     <select id="findPageByLable" parameterType="java.lang.String"
             resultMap="BaseResultMap">
-        <bind name="pattern" value="`%`+_paramter.lable+`%`"/>
+        <bind name="pattern" value="`%`+lable+`%`"/>
         select
         <include refid="Base_Column_List"/>
         from sys_dict
