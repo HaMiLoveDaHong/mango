@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -76,7 +76,7 @@ public class SysMenu implements Serializable {
     /**
      * 创建时间
      */
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 更新人
@@ -86,7 +86,7 @@ public class SysMenu implements Serializable {
     /**
      * 更新时间
      */
-    private LocalDateTime lastUpdateTime;
+    private Date lastUpdateTime;
 
     /**
      * 是否删除 -1:已删除 0:正常

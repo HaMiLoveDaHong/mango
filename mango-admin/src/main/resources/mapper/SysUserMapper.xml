@@ -41,6 +41,14 @@
         sys_user
     </select>
 
+    <select id="findVoPage"  resultType="com.louis.mango.admin.vo.SysUser.SysUserVo">
+        select
+        <include refid="Base_Column_List"/>,d.deptName
+        from
+        sys_user  u
+        left join (select id as dId,name as deptName,del_flag as dDelFlag from sys_dept) d  on u.dept_id = d.dId
+    </select>
+
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
 		insert into sys_user(id,
         name, nick_name, avatar, password, salt, email, mobile, status, dept_id, create_by,

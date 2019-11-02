@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.louis.mango.core.page.PageRequest;
 import com.louis.mango.core.page.PageResult;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -29,4 +30,11 @@ public interface ISysUserService extends IService<SysUser> {
      * @return
      */
     PageResult findPage(PageRequest pageRequest);
+
+    /**
+     * 生成用户信息Excel文件
+     * @param pageRequest
+     * @return
+     */
+    File createUserExcelFile(PageRequest pageRequest);
 }
