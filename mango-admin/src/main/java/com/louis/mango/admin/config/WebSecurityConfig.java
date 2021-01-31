@@ -29,6 +29,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return super.userDetailsService();
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(new JwtAuthenticationProvider(userDetailsService));
