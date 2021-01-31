@@ -1,22 +1,21 @@
 package com.louis.mango.admin.security;
+import java.util.Collection;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * 安全用户模型
- * @quthor haMi
- * @date2019/11/3
+ * @author Louis
+ * @date Jan 14, 2019
  */
-@Data
 public class JwtUserDetails implements UserDetails {
-    private static final long serialVersionUID = 1L;
 
-    private String username;
+	private static final long serialVersionUID = 1L;
+	
+	private String username;
     private String password;
     private String salt;
     private Collection<? extends GrantedAuthority> authorities;
@@ -40,9 +39,9 @@ public class JwtUserDetails implements UserDetails {
     }
 
     public String getSalt() {
-        return salt;
-    }
-
+		return salt;
+	}
+    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;

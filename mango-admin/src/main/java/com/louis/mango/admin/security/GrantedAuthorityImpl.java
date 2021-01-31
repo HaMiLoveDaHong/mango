@@ -1,17 +1,16 @@
 package com.louis.mango.admin.security;
-
 import org.springframework.security.core.GrantedAuthority;
 
 /**
  * 权限封装
- * @quthor haMi
- * @date2019/11/3
+ * @author Louis
+ * @date Jan 14, 2019
  */
 public class GrantedAuthorityImpl implements GrantedAuthority {
+	
+	private static final long serialVersionUID = 1L;
 
-    private static final long serialVersionUID = 1L;
-
-    private String authority;
+	private String authority;
 
     public GrantedAuthorityImpl(String authority) {
         this.authority = authority;

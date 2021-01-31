@@ -3,6 +3,9 @@ package com.louis.mango.admin.dao;
 import com.louis.mango.admin.model.SysMenu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +18,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
 
+    List<SysMenu> findAll();
+
+
+    List<SysMenu> findByUserName(@Param("userName") String userName);
 }

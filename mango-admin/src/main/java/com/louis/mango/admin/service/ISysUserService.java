@@ -4,9 +4,11 @@ import com.louis.mango.admin.model.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.louis.mango.core.page.PageRequest;
 import com.louis.mango.core.page.PageResult;
+import org.apache.ibatis.annotations.Param;
 
 import java.io.File;
 import java.util.List;
+import java.util.Set;
 
 /**
  * <p>
@@ -37,4 +39,8 @@ public interface ISysUserService extends IService<SysUser> {
      * @return
      */
     File createUserExcelFile(PageRequest pageRequest);
+
+    SysUser findByName(String username);
+
+    Set<String> findPermissions(String username);
 }

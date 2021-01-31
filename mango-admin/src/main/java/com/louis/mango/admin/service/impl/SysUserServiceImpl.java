@@ -1,7 +1,9 @@
 package com.louis.mango.admin.service.impl;
 
+import com.louis.mango.admin.model.SysMenu;
 import com.louis.mango.admin.model.SysUser;
 import com.louis.mango.admin.dao.SysUserMapper;
+import com.louis.mango.admin.service.ISysMenuService;
 import com.louis.mango.admin.service.ISysUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.louis.mango.admin.vo.SysUser.SysUserVo;
@@ -21,7 +23,9 @@ import org.springframework.util.ObjectUtils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * <p>
@@ -36,6 +40,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Autowired
     SysUserMapper sysUserMapper;
+
+    @Autowired
+    ISysMenuService sysMenuService;
 
     @Override
     public List<SysUser> findAll() {
@@ -100,4 +107,20 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         }
         return PoiUtils.createExcelFile(workbook,"download_user");
     }
+
+    @Override
+    public SysUser findByName(String username) {
+        return sysUserMapper.findByName(username);
+    }
+
+    @Override
+    public Set<String> findPermissions(String username) {
+        Set<String> perms = new HashSet<>();
+        List<SysMenu> sysMenus = sysMenuService.findByUser(username);
+        for(SysMenu sysMenu:sysMenus) {
+            if(sysMenu.getPerms() != null && !"".equals(sysMenu.getPerms())) {
+                perms.add(sysMenu.getPerms());
+            }
+        }
+        return perms;    }
 }

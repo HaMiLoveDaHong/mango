@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.louis.mango.admin.model.SysUser;
 import com.louis.mango.admin.vo.SysUser.SysUserVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -37,4 +38,11 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
      * @return
      */
     List<SysUserVo> findVoPage();
+
+    /**
+     *
+     * @param username
+     * @return
+     */
+    SysUser findByName(@Param("username") String username);
 }

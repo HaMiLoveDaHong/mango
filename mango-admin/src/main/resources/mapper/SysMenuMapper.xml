@@ -24,5 +24,15 @@
         id,
         name, parent_id, url, perms, type, icon, order_num, create_by, create_time, last_update_by, last_update_time, del_flag
     </sql>
+    <select id="findAll" resultType="com.louis.mango.admin.model.SysMenu">
+        select
+        <include refid="Base_Column_List" />
+        from sys_menu
+    </select>
+    <select id="findByUserName" resultType="com.louis.mango.admin.model.SysMenu">
+        select m.* from sys_menu m, sys_user u, sys_user_role ur, sys_role_menu rm
+        where u.name = #{userName} and u.id = ur.user_id
+        and ur.role_id = rm.role_id and rm.menu_id = m.id
+    </select>
 
 </mapper>

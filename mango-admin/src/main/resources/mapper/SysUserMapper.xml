@@ -59,4 +59,13 @@
 			#{createTime},#{lastUpdateBy},#{lastUpdateTime},#{delFlag}
 		)
     </insert>
+
+    <select id="findByName" resultType="com.louis.mango.admin.model.SysUser">
+        select <include refid="Base_Column_List"/>
+        from sys_user
+        <where>
+            name = #{username}
+        </where>
+    </select>
+
 </mapper>
