@@ -25,16 +25,16 @@ public class MangoAdminApplicationTests {
     }
 
     @Test
-    public void findAll(){
+    public void findAll() {
 //        SysUser sysUser = new SysUser();
 //        sysUser.setName("李六");
 //        iSysUserService.save(sysUser);
 
         List<SysUser> sysUsers = iSysUserService.findAll();
         log.info("=====================================================");
-        log.info("sysUsers:{}",JSON.toJSON(sysUsers));
+        log.info("sysUsers:{}", JSON.toJSON(sysUsers));
 
-        for (SysUser po:sysUsers){
+        for (SysUser po : sysUsers) {
             po.setEmail("12356789@qq.com");
             iSysUserService.updateById(po);
         }

@@ -7,7 +7,6 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- *
  * @quthor haMi
  * @date2019/10/27
  */
@@ -27,10 +26,11 @@ public class SysDictRequestVo extends PageRequest implements Serializable {
 
     /**
      * 重写getter方法
+     *
      * @return
      */
     public String getLable() {
-        if (!StringUtil.isEmpty(this.lable)){
+        if (!StringUtil.isEmpty(this.lable)) {
             this.lable = this.lable.trim();
         }
         return lable;

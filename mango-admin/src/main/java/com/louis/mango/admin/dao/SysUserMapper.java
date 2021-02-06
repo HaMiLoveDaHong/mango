@@ -23,24 +23,26 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
 
     /**
      * 查询全部
+     *
      * @return
      */
     List<SysUser> findAll();
 
     /**
      * 查询记录分页
+     *
      * @return
      */
     List<SysUser> findPage();
 
     /**
      * 查询记录分页
+     *
      * @return
      */
     List<SysUserVo> findVoPage();
 
     /**
-     *
      * @param username
      * @return
      */

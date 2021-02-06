@@ -9,24 +9,25 @@ import java.io.OutputStream;
 
 /**
  * POI 相关操作
+ *
  * @quthor haMi
  * @date2019/11/2
  */
 public class PoiUtils {
 
-    public static File createExcelFile(Workbook workbook,String fileName){
+    public static File createExcelFile(Workbook workbook, String fileName) {
         OutputStream stream = null;
         File file = null;
         try {
-            file = File.createTempFile(fileName,".xlsx");
+            file = File.createTempFile(fileName, ".xlsx");
             stream = new FileOutputStream(file.getAbsoluteFile());
             workbook.write(stream);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             IOUtils.closeQuietly(workbook);
             IOUtils.closeQuietly(stream);
         }
-        return  file;
+        return file;
     }
 }

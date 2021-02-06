@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = {"com.louis.mango"})
-@ImportAutoConfiguration({DruidConfig.class,CorsConfig.class,SwaggerConfig.class})
+@ImportAutoConfiguration({DruidConfig.class, CorsConfig.class, SwaggerConfig.class})
 public class MangoAdminApplication {
 
     public static void main(String[] args) {

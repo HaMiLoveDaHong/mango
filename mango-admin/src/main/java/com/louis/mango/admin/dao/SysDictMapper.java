@@ -22,21 +22,24 @@ public interface SysDictMapper extends BaseMapper<SysDict> {
 
     /**
      * 分页查询
+     *
      * @return
      */
     List<SysDict> findPage();
 
     /**
      * 根据标签名称查询
+     *
      * @param lable
      * @return
      */
-    List<SysDict> findByLable(@Param(value = "lable")String lable);
+    List<SysDict> findByLable(@Param(value = "lable") String lable);
 
     /**
      * 根据标签名称分页查询
+     *
      * @param lable
      * @return
      */
-    List<SysDict> findPageByLable(@Param(value = "lable")String lable);
+    List<SysDict> findPageByLable(@Param(value = "lable") String lable);
 }

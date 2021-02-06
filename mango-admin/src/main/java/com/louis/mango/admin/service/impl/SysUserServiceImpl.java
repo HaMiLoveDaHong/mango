@@ -51,17 +51,17 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Override
     public PageResult findPage(PageRequest pageRequest) {
-        return MybatisPageHelper.findPage(pageRequest,sysUserMapper);
+        return MybatisPageHelper.findPage(pageRequest, sysUserMapper);
     }
 
     @Override
     public File createUserExcelFile(PageRequest pageRequest) {
-        PageResult pageResult =MybatisPageHelper.findPage(pageRequest,sysUserMapper,"findVoPage");
+        PageResult pageResult = MybatisPageHelper.findPage(pageRequest, sysUserMapper, "findVoPage");
         return createUserExcelFile(pageResult.getContent());
     }
 
-    public static File createUserExcelFile(List<?> records){
-        if (ObjectUtils.isEmpty(records)){
+    public static File createUserExcelFile(List<?> records) {
+        if (ObjectUtils.isEmpty(records)) {
             records = new ArrayList();
         }
 
@@ -84,14 +84,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         row0.createCell(++clumnIndex).setCellValue("最后更新人");
         row0.createCell(++clumnIndex).setCellValue("最后更新时间");
 
-        for (int i =0;i < records.size() ; i++){
+        for (int i = 0; i < records.size(); i++) {
             SysUserVo user = (SysUserVo) records.get(i);
-            Row row = sheet.createRow(i+1);
-            for (int j=0;j<clumnIndex +1;j++){
+            Row row = sheet.createRow(i + 1);
+            for (int j = 0; j < clumnIndex + 1; j++) {
                 row.createCell(j);
             }
             clumnIndex = 0;
-            row.getCell(clumnIndex).setCellValue(i+1);
+            row.getCell(clumnIndex).setCellValue(i + 1);
             row.getCell(++clumnIndex).setCellValue(user.getId());
             row.getCell(++clumnIndex).setCellValue(user.getName());
             row.getCell(++clumnIndex).setCellValue(user.getNickName());
@@ -105,7 +105,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
             row.getCell(++clumnIndex).setCellValue(user.getLastUpdateBy());
             row.getCell(++clumnIndex).setCellValue(DateTimeUtils.str(user.getLastUpdateTime()));
         }
-        return PoiUtils.createExcelFile(workbook,"download_user");
+        return PoiUtils.createExcelFile(workbook, "download_user");
     }
 
     @Override
@@ -117,10 +117,11 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     public Set<String> findPermissions(String username) {
         Set<String> perms = new HashSet<>();
         List<SysMenu> sysMenus = sysMenuService.findByUser(username);
-        for(SysMenu sysMenu:sysMenus) {
-            if(sysMenu.getPerms() != null && !"".equals(sysMenu.getPerms())) {
+        for (SysMenu sysMenu : sysMenus) {
+            if (sysMenu.getPerms() != null && !"".equals(sysMenu.getPerms())) {
                 perms.add(sysMenu.getPerms());
             }
         }
-        return perms;    }
+        return perms;
+    }
 }

@@ -14,13 +14,13 @@ public class HelloWorldController {
 
     @RequestMapping(value = "/hello")
     @ResponseBody
-    public String hello(){
+    public String hello() {
         return "hello world!";
     }
 
     @RequestMapping(value = "/bye")
     @ResponseBody
-    public String bye(){
+    public String bye() {
         return "bye bye!";
     }
 

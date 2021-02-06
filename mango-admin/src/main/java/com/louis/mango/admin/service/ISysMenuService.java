@@ -17,6 +17,7 @@ public interface ISysMenuService extends IService<SysMenu> {
 
     /**
      * 根据用户名查找菜单列表
+     *
      * @param userName
      * @return
      */

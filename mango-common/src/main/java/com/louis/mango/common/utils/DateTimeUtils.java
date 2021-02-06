@@ -10,6 +10,7 @@ import java.util.TimeZone;
 
 /**
  * 时间工具类
+ *
  * @quthor haMi
  * @date2019/11/2
  */
@@ -54,14 +55,15 @@ public class DateTimeUtils {
 
     /**
      * date转日期字符串 默认格式 yyyy-MM-dd HH:mm:ss
+     *
      * @param date
      * @return String
-     * */
+     */
     public static String str(Date date) {
         if (null == date) {
             date = new Date();
         }
-        String  format = FMT_DEFAULT;
+        String format = FMT_DEFAULT;
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         simpleDateFormat.setLenient(false);
@@ -70,10 +72,11 @@ public class DateTimeUtils {
 
     /**
      * date转日期字符串
+     *
      * @param date
      * @param format
      * @return String
-     * */
+     */
     public static String str(Date date, String format) {
         if (null == date) {
             date = new Date();
@@ -88,20 +91,22 @@ public class DateTimeUtils {
 
     /**
      * time转日期字符串
+     *
      * @param time
      * @param format
      * @return String
-     * */
+     */
     public static String str(long time, String format) {
         return str(new Date(time), format);
     }
 
     /**
      * 字符串转日期
+     *
      * @param dateStr
      * @param format
      * @return Date
-     * */
+     */
     public static Date date(String dateStr, String format) throws ParseException {
         if (ObjectUtils.isEmpty(dateStr)) {
             return null;
@@ -116,10 +121,11 @@ public class DateTimeUtils {
 
     /**
      * 字符串日期转time
+     *
      * @param dateStr
      * @param format
      * @return String
-     * */
+     */
     public static long time(String dateStr, String format) throws ParseException {
         Date date = date(dateStr, format);
         if (null == date) {
@@ -131,8 +137,9 @@ public class DateTimeUtils {
     /**
      * 获取UTC标准时间（北京时区时间-8小时）
      * Demo: 2018-11-01 09:35:00转换后为2018-11-01T01:35:00
+     *
      * @param date
-     * */
+     */
     public static String utc(Date date) {
         if (null == date) {
             date = new Date();
@@ -145,9 +152,10 @@ public class DateTimeUtils {
     /**
      * 获取UTC标准时间（北京时区时间-8小时）
      * Demo: 2018-11-01 09:35:00转换后为2018-11-01T01:35:00
+     *
      * @param dateStr
      * @param format
-     * */
+     */
     public static String utc(String dateStr, String format) throws ParseException {
         Date date = date(dateStr, format);
         if (null == date) {
@@ -158,11 +166,12 @@ public class DateTimeUtils {
 
     /**
      * 日期加减操作
+     *
      * @param date
      * @param field
      * @param value
      * @return Date
-     * */
+     */
     public static Date add(Date date, Field field, int value) {
         if (null == date) {
             date = new Date();
@@ -176,12 +185,13 @@ public class DateTimeUtils {
 
     /**
      * 字符串日期加减操作
+     *
      * @param dateStr
      * @param format
      * @param field
      * @param value
      * @return String
-     * */
+     */
     public static String add(String dateStr, String format, Field field, int value) throws ParseException {
         if (ObjectUtils.isEmpty(dateStr)) {
             return null;
@@ -195,11 +205,12 @@ public class DateTimeUtils {
 
     /**
      * 日期Field设置操作
+     *
      * @param date
      * @param field
      * @param value
      * @return String
-     * */
+     */
     public static Date set(Date date, Field field, int value) {
         if (null == date) {
             date = new Date();
@@ -212,11 +223,12 @@ public class DateTimeUtils {
 
     /**
      * 日期Field设置操作
+     *
      * @param date
      * @param fields
      * @param values
      * @return String
-     * */
+     */
     public static Date set(Date date, Field[] fields, int[] values) {
         if (null == date) {
             date = new Date();
@@ -233,12 +245,13 @@ public class DateTimeUtils {
 
     /**
      * 日期域set操作，返回set后的日期字符串
+     *
      * @param dateStr
      * @param format
      * @param field
      * @param value
      * @return String
-     * */
+     */
     public static String set(String dateStr, String format, Field field, int value) throws ParseException {
         if (ObjectUtils.isEmpty(dateStr)) {
             return null;
@@ -252,12 +265,13 @@ public class DateTimeUtils {
 
     /**
      * 日期域set操作，返回set后的日期字符串
+     *
      * @param dateStr
      * @param format
      * @param fields
      * @param values
      * @return String
-     * */
+     */
     public static String set(String dateStr, String format, Field[] fields, int[] values) throws ParseException {
         if (ObjectUtils.isEmpty(dateStr)) {
             return null;
@@ -274,11 +288,12 @@ public class DateTimeUtils {
      * 注意：这里是做转换成Time后的值比较，不是按域比较。如：
      * 1. 小于24小时，日、周、月、年值为0
      * 2. 大于等于24小时，小于48小时，日值为1，周、月、年值为0
+     *
      * @param date1
      * @param date2
      * @param field
      * @return int
-     * */
+     */
     public static long between(Date date1, Date date2, Field field) {
         if (null == date1 && null == date2) {
             return 0;
@@ -302,20 +317,21 @@ public class DateTimeUtils {
             case WEEK:
                 return millSeconds / 1000 / 3600 / 24 / 7;
             case MONTH:
-                return millSeconds / 1000 / 3600 /24 / 30;
+                return millSeconds / 1000 / 3600 / 24 / 30;
             case YEAR:
-                return millSeconds / 1000 / 3600 / 24/ 365;
+                return millSeconds / 1000 / 3600 / 24 / 365;
         }
         return millSeconds;
     }
 
     /**
      * 字符串日期间隔差，返回指定域的时间差绝对值
+     *
      * @param dateStr1
      * @param dateStr2
      * @param field
      * @return int
-     * */
+     */
     public static long between(String dateStr1, String dateStr2, String format, Field field) throws ParseException {
         if (ObjectUtils.isEmpty(dateStr1) && ObjectUtils.isEmpty(dateStr2)) {
             return 0;
@@ -330,10 +346,11 @@ public class DateTimeUtils {
 
     /**
      * 日期对比
+     *
      * @param date1
      * @param date2
      * @return long
-     * */
+     */
     public static long compare(Date date1, Date date2) {
         if (null == date1 && null == date2) {
             return 0;
@@ -349,9 +366,10 @@ public class DateTimeUtils {
 
     /**
      * 返回当前日期所在月有多少天
+     *
      * @param date
      * @return int
-     * */
+     */
     public static int daysOfMonth(Date date) {
         if (null == date) {
             date = new Date();
@@ -365,9 +383,10 @@ public class DateTimeUtils {
 
     /**
      * 返回当前日期所在年有多少天
+     *
      * @param date
      * @return int
-     * */
+     */
     public static int daysOfYear(Date date) {
         if (null == date) {
             date = new Date();
@@ -381,10 +400,11 @@ public class DateTimeUtils {
 
     /**
      * 获取日期所在月第一天
+     *
      * @param date
      * @param time 自定义时间（默认00:00:00）
      * @return Date
-     * */
+     */
     public static Date firstDayOfMonth(Date date, String time) {
         if (null == date) {
             date = new Date();
@@ -404,10 +424,11 @@ public class DateTimeUtils {
 
     /**
      * 获取日期所在月最后一天
+     *
      * @param date
      * @param time 自定义时间（默认23:59:59）
      * @return Date
-     * */
+     */
     public static Date lastDayOfMonth(Date date, String time) {
         if (null == date) {
             date = new Date();
@@ -428,9 +449,10 @@ public class DateTimeUtils {
 
     /**
      * 返回 {@link java.util.Calendar} 定义的日期域
+     *
      * @param field
      * @return int
-     * */
+     */
     private static int fieldParse(Field field) {
         switch (field) {
             case YEAR:
@@ -455,11 +477,12 @@ public class DateTimeUtils {
 
     /**
      * 获取 对应日期的 对应值
+     *
      * @param date
      * @param field
      * @return
      */
-    public static  int field(Date date, Field field){
+    public static int field(Date date, Field field) {
         if (null == date) {
             date = new Date();
         }
@@ -469,7 +492,7 @@ public class DateTimeUtils {
             case YEAR:
                 return calendar.get(Calendar.YEAR);
             case MONTH:
-                calendar.add(Calendar.MONDAY,1);
+                calendar.add(Calendar.MONDAY, 1);
                 return calendar.get(Calendar.MONDAY);
             case WEEK:
                 return calendar.get(Calendar.WEEK_OF_YEAR);

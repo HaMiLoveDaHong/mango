@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * 身份验证提供者
+ *
  * @author Louis
  * @date Jan 14, 2019
  */
@@ -20,20 +21,20 @@ public class JwtAuthenticationProvider extends DaoAuthenticationProvider {
     }
 
     @Override
-	protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication)
-			throws AuthenticationException {
-		if (authentication.getCredentials() == null) {
-			logger.debug("Authentication failed: no credentials provided");
-			throw new BadCredentialsException(messages.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"));
-		}
+    protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication)
+            throws AuthenticationException {
+        if (authentication.getCredentials() == null) {
+            logger.debug("Authentication failed: no credentials provided");
+            throw new BadCredentialsException(messages.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"));
+        }
 
-		String presentedPassword = authentication.getCredentials().toString();
-		String salt = ((JwtUserDetails) userDetails).getSalt();
-		// 覆写密码验证逻辑
-		if (!new PasswordEncoder(salt).matches(userDetails.getPassword(), presentedPassword)) {
-			logger.debug("Authentication failed: password does not match stored value");
-			throw new BadCredentialsException(messages.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"));
-		}
-	}
+        String presentedPassword = authentication.getCredentials().toString();
+        String salt = ((JwtUserDetails) userDetails).getSalt();
+        // 覆写密码验证逻辑
+        if (!new PasswordEncoder(salt).matches(userDetails.getPassword(), presentedPassword)) {
+            logger.debug("Authentication failed: password does not match stored value");
+            throw new BadCredentialsException(messages.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"));
+        }
+    }
 
 }

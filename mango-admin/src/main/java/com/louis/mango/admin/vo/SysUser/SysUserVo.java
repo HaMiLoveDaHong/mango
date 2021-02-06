@@ -5,6 +5,7 @@ import lombok.Data;
 
 /**
  * SysUser 的 vo
+ *
  * @quthor haMi
  * @date2019/11/2
  */

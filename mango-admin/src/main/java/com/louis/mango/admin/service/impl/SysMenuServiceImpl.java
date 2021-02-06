@@ -25,7 +25,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
     @Override
     public List<SysMenu> findByUser(String userName) {
-        if(userName == null || "".equals(userName) || Constants.ADMIN.equalsIgnoreCase(userName)) {
+        if (userName == null || "".equals(userName) || Constants.ADMIN.equalsIgnoreCase(userName)) {
             return sysMenuMapper.findAll();
         }
         return sysMenuMapper.findByUserName(userName);

@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * 分页返回结果
+ *
  * @quthor haMi
  * @date2019/10/19
  */
@@ -18,7 +19,7 @@ public class PageResult {
     private int pageNum;
 
     /**
-     *每页数量
+     * 每页数量
      */
     private int pageSize;
 

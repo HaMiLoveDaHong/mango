@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 /**
  * 弃用  注解方式不支持mybatis-plus 基本的增删改查方法，改为yml文件配置
+ *
  * @quthor haMi
  * @date2019/10/11
  */
@@ -22,7 +23,7 @@ public class MybatisConfig {
     private DataSource dataSource;
 
     @Bean
-    public SqlSessionFactory sqlSessionFactory()throws Exception{
+    public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource);
         //扫描model

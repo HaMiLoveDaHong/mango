@@ -4,29 +4,30 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.louis.mango.admin.model.SysMenu">
-    <result column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="parent_id" property="parentId" />
-        <result column="url" property="url" />
-        <result column="perms" property="perms" />
-        <result column="type" property="type" />
-        <result column="icon" property="icon" />
-        <result column="order_num" property="orderNum" />
-        <result column="create_by" property="createBy" />
-        <result column="create_time" property="createTime" />
-        <result column="last_update_by" property="lastUpdateBy" />
-        <result column="last_update_time" property="lastUpdateTime" />
-        <result column="del_flag" property="delFlag" />
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="url" property="url"/>
+        <result column="perms" property="perms"/>
+        <result column="type" property="type"/>
+        <result column="icon" property="icon"/>
+        <result column="order_num" property="orderNum"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_time" property="createTime"/>
+        <result column="last_update_by" property="lastUpdateBy"/>
+        <result column="last_update_time" property="lastUpdateTime"/>
+        <result column="del_flag" property="delFlag"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id,
-        name, parent_id, url, perms, type, icon, order_num, create_by, create_time, last_update_by, last_update_time, del_flag
+        name, parent_id, url, perms, type, icon, order_num, create_by, create_time, last_update_by, last_update_time,
+        del_flag
     </sql>
     <select id="findAll" resultType="com.louis.mango.admin.model.SysMenu">
         select
-        <include refid="Base_Column_List" />
+        <include refid="Base_Column_List"/>
         from sys_menu
     </select>
     <select id="findByUserName" resultType="com.louis.mango.admin.model.SysMenu">

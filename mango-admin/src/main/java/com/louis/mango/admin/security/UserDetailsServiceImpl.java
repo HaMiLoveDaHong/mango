@@ -1,4 +1,5 @@
 package com.louis.mango.admin.security;
+
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -12,8 +13,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.louis.mango.admin.model.SysUser;
+
 /**
  * 用户登录认证信息查询
+ *
  * @author Louis
  * @date Jan 14, 2019
  */

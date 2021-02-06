@@ -37,26 +37,26 @@ public class SysUserController {
 
     @RequestMapping(value = "/findAll")
     @ResponseBody
-    public String findAll(){
+    public String findAll() {
         List<SysUser> sysUsers = iSysUserService.findAll();
         return JSON.toJSONString(sysUsers);
     }
 
     @RequestMapping(value = "/findPage")
     @ResponseBody
-    public PageResult findPage(@RequestBody PageRequest pageRequest){
+    public PageResult findPage(@RequestBody PageRequest pageRequest) {
         PageResult pageResult = null;
         try {
             pageResult = iSysUserService.findPage(pageRequest);
-        }catch (Exception e){
-            log.info("异常信息：{},详情：{}",e.getMessage(),e);
+        } catch (Exception e) {
+            log.info("异常信息：{},详情：{}", e.getMessage(), e);
         }
         return pageResult;
     }
 
     @PostMapping(value = "/exportExcelUser")
-    public void exportExcelUser(@RequestBody PageRequest pageRequest, HttpServletResponse res){
+    public void exportExcelUser(@RequestBody PageRequest pageRequest, HttpServletResponse res) {
         File file = iSysUserService.createUserExcelFile(pageRequest);
-        FileUtils.downloadFile(res,file,file.getName());
+        FileUtils.downloadFile(res, file, file.getName());
     }
 }

@@ -7,6 +7,7 @@ import java.util.Map;
 
 /**
  * 分页请求
+ *
  * @quthor haMi
  * @date2019/10/19
  */
@@ -26,6 +27,6 @@ public class PageRequest {
     /**
      * 查询参数
      */
-    private Map<String,Object> params = new HashMap();
+    private Map<String, Object> params = new HashMap();
 
 }

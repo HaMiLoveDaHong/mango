@@ -8,6 +8,7 @@ import java.lang.reflect.Method;
 
 /**
  * Mybatis 分页查询助手
+ *
  * @quthor haMi
  * @date2019/10/19
  */
@@ -17,51 +18,52 @@ public class MybatisPageHelper {
 
     /**
      * 分页查询，约定查询方法名为"findPage"
+     *
      * @param pageRequest 分页请求
-     * @param mapper Dao 对象，MyBatis 的Mapper
+     * @param mapper      Dao 对象，MyBatis 的Mapper
      * @return
      */
-    public static PageResult findPage(PageRequest pageRequest,Object mapper){
-        return findPage(pageRequest,mapper,findPage);
+    public static PageResult findPage(PageRequest pageRequest, Object mapper) {
+        return findPage(pageRequest, mapper, findPage);
     }
 
     /**
-     *
-     * @param pageRequest 分页请求
-     * @param mapper dao对象，MyBatis 的 Mapper
+     * @param pageRequest     分页请求
+     * @param mapper          dao对象，MyBatis 的 Mapper
      * @param queryMethodName 要分页的查询方法名
-     * @param args 方法参数
+     * @param args            方法参数
      * @return
      */
-    public static PageResult findPage(PageRequest pageRequest,Object mapper,String queryMethodName,Object... args){
+    public static PageResult findPage(PageRequest pageRequest, Object mapper, String queryMethodName, Object... args) {
         //设置分页参数
         int pageNum = pageRequest.getPageNum();
         int pageSize = pageRequest.getPageSize();
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         //利用反射查询方法
         Method method = null;
-        if (args == null){
-            method = ReflectionUtils.findMethod(mapper.getClass(),queryMethodName);
-        }else {
+        if (args == null) {
+            method = ReflectionUtils.findMethod(mapper.getClass(), queryMethodName);
+        } else {
             Method[] methods = mapper.getClass().getMethods();
-            for (Method param:methods){
-                if (queryMethodName.equals(param.getName())){
+            for (Method param : methods) {
+                if (queryMethodName.equals(param.getName())) {
                     method = param;
                     break;
                 }
             }
         }
-        Object result = ReflectionUtils.invokeMethod(method,mapper,args);
-        return getPageResult(pageRequest,new PageInfo((java.util.List) result));
+        Object result = ReflectionUtils.invokeMethod(method, mapper, args);
+        return getPageResult(pageRequest, new PageInfo((java.util.List) result));
     }
 
     /**
      * 将分页信息封装到统一的接口
+     *
      * @param pageRequest
      * @param pageInfo
      * @return
      */
-    public static PageResult getPageResult(PageRequest pageRequest, PageInfo<?> pageInfo){
+    public static PageResult getPageResult(PageRequest pageRequest, PageInfo<?> pageInfo) {
         PageResult pageResult = new PageResult();
         pageResult.setPageNum(pageInfo.getPageNum());
         pageResult.setPageSize(pageInfo.getPageSize());

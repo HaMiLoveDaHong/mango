@@ -9,6 +9,7 @@ import java.util.Properties;
 
 /**
  * 验证码配置
+ *
  * @quthor haMi
  * @date2019/11/2
  */
@@ -16,11 +17,11 @@ import java.util.Properties;
 public class KaptchaConfig {
 
     @Bean
-    public DefaultKaptcha producer(){
-        Properties properties  = new Properties();
-        properties.put("kaptcha.border","no");
-        properties.put("kaptcha.textproducer.font.color","black");
-        properties.put("kaptcha.textproducer.char.space","5");
+    public DefaultKaptcha producer() {
+        Properties properties = new Properties();
+        properties.put("kaptcha.border", "no");
+        properties.put("kaptcha.textproducer.font.color", "black");
+        properties.put("kaptcha.textproducer.char.space", "5");
         Config config = new Config(properties);
         DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
         defaultKaptcha.setConfig(config);

@@ -21,6 +21,7 @@ public interface ISysDictService extends IService<SysDict> {
 
     /**
      * 根据名称查询
+     *
      * @param lable
      * @return
      */
@@ -28,18 +29,21 @@ public interface ISysDictService extends IService<SysDict> {
 
     /**
      * 分页查询
+     *
      * @return
      */
     PageResult findPage(SysDictRequestVo pageRequest);
 
     /**
      * 根据标签名称分页查询
+     *
      * @return
      */
     PageResult findPageByLable(SysDictRequestVo pageRequest);
 
     /**
      * 根据主键id删除记录
+     *
      * @param requestVo
      */
     void deleteById(SysDictRequestVo requestVo);

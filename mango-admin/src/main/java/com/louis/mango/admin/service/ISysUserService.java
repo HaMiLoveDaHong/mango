@@ -22,12 +22,14 @@ public interface ISysUserService extends IService<SysUser> {
 
     /**
      * 查询所有用户记录
+     *
      * @return
      */
     List<SysUser> findAll();
 
     /**
      * 查询记录分页
+     *
      * @param pageRequest
      * @return
      */
@@ -35,6 +37,7 @@ public interface ISysUserService extends IService<SysUser> {
 
     /**
      * 生成用户信息Excel文件
+     *
      * @param pageRequest
      * @return
      */

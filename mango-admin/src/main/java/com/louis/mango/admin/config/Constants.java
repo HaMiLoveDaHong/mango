@@ -2,6 +2,7 @@ package com.louis.mango.admin.config;
 
 /**
  * 常量
+ *
  * @quthor haMi
  * @date2019/11/2
  */

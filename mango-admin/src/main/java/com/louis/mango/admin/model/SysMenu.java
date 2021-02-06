@@ -42,9 +42,9 @@ public class SysMenu implements Serializable {
 
     /**
      * 菜单 URL，类型:
-	1.普通页面（如用户管理，/sys/user）
-	2.嵌套完整外部页面，以http(s)开头的连接 
-	3.嵌套服务器页面，使用iframe:前缀+目标URL(如SQL监控，iframe:/druid/login.html,iframe:前缀会替换成服务地址)
+     * 1.普通页面（如用户管理，/sys/user）
+     * 2.嵌套完整外部页面，以http(s)开头的连接
+     * 3.嵌套服务器页面，使用iframe:前缀+目标URL(如SQL监控，iframe:/druid/login.html,iframe:前缀会替换成服务地址)
      */
     private String url;
 

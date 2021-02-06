@@ -5,6 +5,7 @@ import org.apache.http.HttpStatus;
 
 /**
  * Http 结果封装
+ *
  * @quthor haMi
  * @date2019/10/27
  */
@@ -26,38 +27,38 @@ public class HttpResult {
      */
     private Object data;
 
-    public static HttpResult error(){
-        return error(HttpStatus.SC_INTERNAL_SERVER_ERROR,"未知异常，请联系管理员");
+    public static HttpResult error() {
+        return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, "未知异常，请联系管理员");
     }
 
-    public static HttpResult error(String msg){
-      return error(HttpStatus.SC_INTERNAL_SERVER_ERROR,msg);
+    public static HttpResult error(String msg) {
+        return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, msg);
     }
 
-    public static HttpResult error(int code,String msg){
+    public static HttpResult error(int code, String msg) {
         HttpResult httpResult = new HttpResult();
         httpResult.setCode(code);
         httpResult.setMsg(msg);
         return httpResult;
     }
 
-    public static HttpResult ok(){
+    public static HttpResult ok() {
         return new HttpResult();
     }
 
-    public static HttpResult ok(String msg){
+    public static HttpResult ok(String msg) {
         HttpResult httpResult = new HttpResult();
         httpResult.setMsg(msg);
         return httpResult;
     }
 
-    public HttpResult ok(Object data){
+    public HttpResult ok(Object data) {
         HttpResult httpResult = new HttpResult();
         httpResult.setData(data);
         return httpResult;
     }
 
-    public HttpResult ok(Object data,String msg){
+    public HttpResult ok(Object data, String msg) {
         HttpResult httpResult = new HttpResult();
         httpResult.setData(data);
         httpResult.setMsg(msg);

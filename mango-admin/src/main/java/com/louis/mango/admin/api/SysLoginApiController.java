@@ -18,6 +18,7 @@ import java.io.IOException;
 
 /**
  * 登陆 api 接口
+ *
  * @quthor haMi
  * @date2019/11/2
  */
@@ -31,25 +32,26 @@ public class SysLoginApiController {
 
     /**
      * 生成验证码
+     *
      * @param response
      * @param request
      */
     @GetMapping("captcha.jpg")
-    public void captcha(HttpServletResponse response, HttpServletRequest request){
+    public void captcha(HttpServletResponse response, HttpServletRequest request) {
         try {
-            response.setHeader("Cache-Control","no-store,no-cache");
+            response.setHeader("Cache-Control", "no-store,no-cache");
             response.setContentType("image/jpeg");
             //生成文字验证码
             String text = producer.createText();
             //生成图片验证码
             BufferedImage image = producer.createImage(text);
             //保存到验证码 到 session
-            request.getSession().setAttribute(Constants.KAPTCHA_SESSION_KEY,text);
+            request.getSession().setAttribute(Constants.KAPTCHA_SESSION_KEY, text);
             ServletOutputStream out = response.getOutputStream();
-            ImageIO.write(image,"jpg",out);
+            ImageIO.write(image, "jpg", out);
             IOUtils.closeQuietly(out);
         } catch (IOException e) {
-            log.info("接口：/api/login/captcha.jpg，报错信息:{},详情:{}",e.getMessage(),e);
+            log.info("接口：/api/login/captcha.jpg，报错信息:{},详情:{}", e.getMessage(), e);
         }
 
     }

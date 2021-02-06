@@ -37,9 +37,9 @@ public class SysDictServiceImpl extends ServiceImpl<SysDictMapper, SysDict> impl
     @Override
     public PageResult findPage(SysDictRequestVo pageRequest) {
         PageResult result = null;
-        if (StringUtil.isEmpty(pageRequest.getLable())){
-            result = MybatisPageHelper.findPage(pageRequest,super.baseMapper);
-        }else {
+        if (StringUtil.isEmpty(pageRequest.getLable())) {
+            result = MybatisPageHelper.findPage(pageRequest, super.baseMapper);
+        } else {
             result = findPageByLable(pageRequest);
         }
         return result;
@@ -49,7 +49,7 @@ public class SysDictServiceImpl extends ServiceImpl<SysDictMapper, SysDict> impl
     public PageResult findPageByLable(SysDictRequestVo pageRequest) {
         //baseMapper 的方法名称
         String queryMethodName = "findPageByLable";
-        return MybatisPageHelper.findPage(pageRequest,sysDictMapper,queryMethodName,pageRequest.getLable());
+        return MybatisPageHelper.findPage(pageRequest, sysDictMapper, queryMethodName, pageRequest.getLable());
     }
 
     @Override
