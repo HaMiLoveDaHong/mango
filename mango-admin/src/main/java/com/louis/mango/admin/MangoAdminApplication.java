@@ -6,7 +6,9 @@ import com.louis.mango.admin.config.SwaggerConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+@EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = {"com.louis.mango"})
 @ImportAutoConfiguration({DruidConfig.class, CorsConfig.class, SwaggerConfig.class})
 public class MangoAdminApplication {

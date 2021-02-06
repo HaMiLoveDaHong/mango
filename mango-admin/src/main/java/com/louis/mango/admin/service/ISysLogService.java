@@ -2,6 +2,7 @@ package com.louis.mango.admin.service;
 
 import com.louis.mango.admin.model.SysLog;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>

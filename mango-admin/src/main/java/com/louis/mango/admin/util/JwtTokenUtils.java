@@ -1,16 +1,23 @@
 package com.louis.mango.admin.util;
 
-import com.louis.mango.admin.security.GrantedAuthorityImpl;
-import com.louis.mango.admin.security.JwtAuthenticatioToken;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
-import java.util.*;
+import com.louis.mango.admin.security.GrantedAuthorityImpl;
+import com.louis.mango.admin.security.JwtAuthenticatioToken;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 /**
  * JWT工具类

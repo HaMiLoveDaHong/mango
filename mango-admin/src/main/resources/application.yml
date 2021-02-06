@@ -1,5 +1,9 @@
+server:
+  port: 8001
 #spring 配置
 spring:
+  application:
+    name: mango-admin
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
@@ -20,24 +24,25 @@ spring:
       max-pool-prepared-statement-per-connection-size: 20
       pool-prepared-statements: true
       max-open-prepared-statements: 50
-
-#mybatis-plus
-mybatis-plus:
-  mapper-locations: classpath:/mapper/*Mapper.xml
-  #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.louis.mango.admin.model
-
-#pagehelper
-pagehelper:
-   helperDialect: mysql
-   reasonable: true
-   supportMethodsArguments: true
-   params: count=countSql
-
-#端口号
-server:
-  port: 8081
-
+  boot:
+    admin:
+      client:
+        url: "http://localhost:8000"
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        serviceName: ${spring.application.name}	# 注册到consul的服务名称
+# 开放健康检查接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
 
 
 
